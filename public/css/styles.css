@@ -39,6 +39,9 @@ header a {
 .portrait{
     width: 250px
 }
+.icon{
+    width:200px
+}
 
 input{
     border: 1px solid #cccccc;
