@@ -1,6 +1,3 @@
-
-
-
 const weatherform = document.querySelector('form')
 const search = document.querySelector('input')
 const locHTML = document.querySelector('#locid')
