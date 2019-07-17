@@ -23,7 +23,6 @@ weatherform.addEventListener('submit', (e) => {
             iconHTML.src = `/img/${data.icon}.png`
             if(data.alertT){
                 alertHTML.textContent = `${data.alertT}: ${data.alertD}`
-                console.log('alert' , data.alertT)
             }else{
                 alertHTML.textContent = ''
             }
