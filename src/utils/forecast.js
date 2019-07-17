@@ -5,12 +5,12 @@ const forecast = (lat, long, callback) => {
     request({url: url, json:true}, (error, {body}) =>{
         if (!error){
             if(body.error){
-                callback(body.error, undefined, undefined)
+                callback(body.error, undefined, undefined, undefined)
             }else{
-                callback(undefined, body.daily.data[0].summary + ` It is currently ${body.currently.temperature} degrees out. There is a ${body.daily.data[0].precipProbability * 100} % chance of ${body.daily.data[0].precipType}.`, `The high temp for the day will be ${body.daily.data[0].temperatureHigh} degrees and the low will be ${body.daily.data[0].temperatureLow} degrees`, body.daily.data[0].icon)
+                callback(undefined, body.daily.data[0].summary + ` It is currently ${body.currently.temperature} degrees out. There is a ${body.daily.data[0].precipProbability * 100} % chance of ${body.daily.data[0].precipType}.`, `The high temp for the day will be ${body.daily.data[0].temperatureHigh} degrees and the low will be ${body.daily.data[0].temperatureLow} degrees`, body.daily.data[0].icon, body.alerts[0].title, body.alerts[0].description)
             }
         }else{
-            callback(error, undefined, undefined)
+            callback(error, undefined, undefined, undefined)
         }
     })
 }

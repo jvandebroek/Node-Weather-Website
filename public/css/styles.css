@@ -37,10 +37,13 @@ header a {
 }
 
 .portrait{
-    width: 250px
+    width: 250px;
 }
 .icon{
-    width:200px
+    width: 200px;
+}
+.alert{
+    color: red;
 }
 
 input{

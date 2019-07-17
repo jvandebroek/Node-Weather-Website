@@ -4,6 +4,7 @@ const locHTML = document.querySelector('#locid')
 const forHTML = document.querySelector('#forid')
 const tempHTML = document.querySelector('#forTemps')
 const iconHTML = document.querySelector('.icon')
+const alertHTML = document.querySelector('.alert')
 
 
 
@@ -20,7 +21,12 @@ weatherform.addEventListener('submit', (e) => {
             forHTML.textContent = data.forecast
             tempHTML.textContent = data.tempInfo
             iconHTML.src = `/img/${data.icon}.png`
-            console.log(data.icon)
+            if(data.alertT){
+                alertHTML.textContent = `${data.alertT}: ${data.alertD}`
+                console.log('alert' , data.alertT)
+            }else{
+                alertHTML.textContent = ''
+            }
         }else{
             locHTML.textContent = 'Error'
             forHTML.textContent = data.error
