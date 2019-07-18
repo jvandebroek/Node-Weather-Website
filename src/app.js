@@ -45,6 +45,38 @@ app.get('/about', (req, res) =>{
     })
 })
 
+app.get('/weather/coords', (req, res) =>{
+    if(!req.query.address){
+        res.send({
+            error: 'you must provide a search term'
+        })
+    }else{
+        geocodecoord(req.query.address, (error, {latitude, longitude, location} = {})=>{
+            if(error){
+                return res.send({
+                    error: error
+                })
+            }
+            forecast(latitude, longitude, (error, forecastdata, tempInfo, icon, alertT, alertD) => {
+                if(error){
+                    return res.send({
+                        error: error
+                    })
+                }
+                res.send({ 
+                    location: location,
+                    forecast: forecastdata,
+                    address: req.query.address,
+                    tempInfo: tempInfo,
+                    icon: icon,
+                    alertT: alertT,
+                    alertD: alertD
+                })
+            })
+         })
+    }
+})
+
 app.get('/weather', (req, res) =>{
     if(!req.query.address){
         res.send({
